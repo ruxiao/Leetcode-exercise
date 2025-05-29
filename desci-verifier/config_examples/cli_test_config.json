@@ -1,0 +1,7 @@
+{
+  "git_url": "https://github.com/ai-powered-dev/dummy-python-project.git",
+  "branch": "main",
+  "run_script": "main.py",
+  "dependency_file": "requirements.txt",
+  "expected_output_files": ["output.txt", "results/data.csv"]
+}
