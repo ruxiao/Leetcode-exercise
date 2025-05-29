@@ -1,0 +1,11 @@
+{
+  "git_url": "https://github.com/someuser/research-project.git",
+  "branch": "main",
+  "run_script": "src/analyze_data.py",
+  "dependency_file": "requirements.txt",
+  "dockerfile": null,
+  "expected_output_files": [
+    "results/output_data.csv",
+    "plots/figure1.png"
+  ]
+}

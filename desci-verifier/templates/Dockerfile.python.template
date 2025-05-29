@@ -1,0 +1,23 @@
+# Base Python image - consider making this configurable in the future
+FROM python:3.9-slim
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the DeSci container wrapper script into the image.
+# The environment_builder will need to ensure this script is available at the build context root.
+COPY {container_wrapper_name} .
+
+# Copy the dependency file
+COPY {dependency_file} .
+
+# Install dependencies
+# This section might need to be smarter based on the dependency_file type (e.g., environment.yml for conda)
+# For now, assume requirements.txt and pip
+RUN if [ -f "{dependency_file}" ]; then pip install --no-cache-dir -r {dependency_file}; else echo "No {dependency_file} found, skipping pip install."; fi
+
+# Copy the rest of the application code from the build context
+COPY . .
+
+# (Optional) Specify a default command, though our executor will override this
+# CMD ["python", "your_default_script.py"]
